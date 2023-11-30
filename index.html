@@ -1,0 +1,190 @@
+/*
+    Author: Felix Yap
+    Course: COMP 3612
+    Instructor: Randy Connolly
+*/
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="index.css">
+        <title>Assignment #2</title>
+    </head>
+    <form action="https://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.php" method="get">
+        <body>
+            <header id="navigator">
+                <span id="homelink">Song Cloud</span>
+                <nav>
+                    <div id="button_container">
+                        <input class="btn" id="search_btn" type="button" onclick="loadSearch()" value="Search">
+                        <input class="btn" id="playlist_btn" type="button" onclick="viewPlaylist()" value="Playlist">
+                    </div>
+                    <div id="credit_container">
+                        <input class="btn" id="credit_btn" type="button" value="Credits">
+                        <ul id="popUp" class="hidden">
+                            <li class="credit_dropDown">Felix</li>
+                            <li class="credit_dropDown"><a href='https://fyap898.github.io/COM3612_Asg2/'>GitHub</a></li>
+                        </ul>
+                    </div>
+                    
+                </nav>
+            </header>
+            <main id="home">
+                <section id="genre">
+                    
+                </section>
+                <section id="artist">
+                    
+                </section>
+                <section id="pop_song">
+                    
+                </section>
+            </main>
+
+            <main id="search">
+                <section id="song_search">
+                    <h1>Basic Song Search</h1>
+                    <div class="search_div">
+                        <input type="radio" id="title_radio" onclick="radioBtn_enable('title')">
+                        <span id="title_radio_text" class="radio_text">Title</span>
+                        <input name="filter" type="text" id="title_search_box" class="search_box" placeholder="Type Here">
+                    </div>
+                    <div class="search_div">
+                        <input type="radio" id="artist_radio" onclick="radioBtn_enable('artist')">
+                        <span id="artist_radio_text" class="radio_text">Artist</span>
+                        <select name="filter" id="artist_search_box" class="search_box">
+                            <option value="none">Pick one</option>
+
+                        </select>
+                    </div>
+                    <div class="search_div">
+                        <input type="radio" id="genre_radio" onclick="radioBtn_enable('genre')">
+                        <span id="genre_radio_text" class="radio_text">Genre</span>
+                        <select name="filter" id="genre_search_box" class="search_box">
+                            <option value="none">Pick one</option>
+
+                        </select>
+                    </div>
+
+                    <div id="search_btn_line">
+                        <input type="button" name="clear" value="Clear" class="search_btn" id="clear_search" onclick="clearSearch()">
+                        <input type="button" name="filter" value="Filter" class="search_btn" id="filter_search" onclick="filterSearch()"> 
+                    </div>
+                    
+                </section>
+                <section id="result">
+                    <h2>Browse / Search Results</h2>
+                    <div>
+                        <div id="result_title">
+                            <span>Title<input type="button" value="Sort" id="title_sort" onclick="sortTitle()" class="sortBtn"></span>
+                            <ul id="result_title_list" class="result_list"></ul>
+                        </div>
+                        <div id="result_artist">
+                            <span>Artist<input type="button" value="Sort" id="artist_sort" onclick="sortArtist()" class="sortBtn"></span>
+                            <ul id="result_artist_list" class="result_list"></ul>
+                        </div>
+                        <div id="result_year">
+                            <span>Year<input type="button" value="Sort" id="year_sort" onclick="sortYear()" class="sortBtn"></span>
+                            <ul id="result_year_list" class="result_list"></ul>
+                        </div>
+                        <div id="result_genre">
+                            <span>Genre<input type="button" value="Sort" id="genre_sort" onclick="sortGenre()" class="sortBtn"></span>
+                            <ul id="result_genre_list" class="result_list"></ul>
+                        </div>
+                        <div id="result_add">
+                            <span>Add to Playlist</span>
+                            <ul id="result_add_list" class="result_list"></ul>
+                        </div>
+                    </div>
+
+                </section>
+                <div id="snackbar">Song has added to playlist !!!</div>
+                <div id="tooltip">
+                    <span id="tooltiptext"></span>
+                </div>
+            </main>
+
+            <main id="single_song">
+                <section id="song_info">
+                    <h1>Song Information</h1>
+                    <div id="song_detail">
+                        <span class="song_container"><span>Title</span>: <strong id="title_detail"></strong></span>
+                        <br>
+                        <span class="song_container"><span>Name</span>: <strong id="name_detail"></strong></span>
+                        <br>
+                        <span class="song_container"><span>Artist Type</span>: <strong id="type_detail"></strong></span>
+                        <br>
+                        <span class="song_container"><span>Genre</span>: <strong id="genre_detail"></strong></span>
+                        <br>
+                        <span class="song_container"><span>Year</span>: <strong id="year_detail"></strong></span>
+                        <br>
+                        <span class="song_container"><span>Duration</span>: <strong id="duration_detail"></strong></span>
+                        <br>
+                    </div>
+
+                    <h1>Analysed Data</h1>
+                    <div id="analyse_data">
+                        <span class="song_container"><span>BPM</span>: <strong id="bpm_analysis"></strong></span>
+                        <br>
+                        <span class="song_container"><span>Energy</span>: <strong id="energy_analysis"></strong></span>
+                        <br>
+                        <span class="song_container"><span>Danceability</span>: <strong id="dance_analysis"></strong></span>
+                        <br>
+                        <span class="song_container"><span>Liveness</span>: <strong id="live_analysis"></strong></span>
+                        <br>
+                        <span class="song_container"><span>Valence</span>: <strong id="val_analysis"></strong></span>
+                        <br>
+                        <span class="song_container"><span>Acousticness</span>: <strong id="acou_analysis"></strong></span>
+                        <br>
+                        <span class="song_container"><span>Speechiness</span>: <strong id="speech_analysis"></strong></span>
+                        <br>
+                        <span class="song_container"><span>Popularity</span>: <strong id="pop_analysis"></strong></span>
+                        <br>
+                    </div>
+                </section>
+                <section id="chart">
+                    <h1>Radar Chart</h1>
+                    <div>
+                        <canvas id="radar_chart"></canvas>
+                    </div>
+                </section>
+            </main>
+
+            <main id="playlist">
+                    <div>
+                        <h1>Playlist Details</h1>
+                        <input type="button" value="Clear Playlist" id="clear_playlist" class="btn" onclick="clearPlaylist()">
+                    </div>
+                    <br>
+                    <div id="list_container">
+                        <div id="playlist_title" class="playlist_div">
+                            <span>Title</span>
+                            <ul id="playlist_title_list" class="playlist_list"></ul>
+                        </div>
+                        <div id="playlist_artist" class="playlist_div">
+                            <span>Artist</span>
+                            <ul id="playlist_artist_list" class="playlist_list"></ul>
+                        </div>
+                        <div id="playlist_year" class="playlist_div">
+                            <span>Year</span>
+                            <ul id="playlist_year_list" class="playlist_list"></ul>
+                        </div>
+                        <div id="playlist_genre" class="playlist_div">
+                            <span>Genre</span>
+                            <ul id="playlist_genre_list" class="playlist_list"></ul>
+                        </div>
+                        <div id="playlist_remove" class="playlist_div">
+                            <span>Remove from Playlist</span>
+                            <ul id="playlist_remove_list" class="playlist_list"></ul>
+                        </div>
+                    </div>
+            </main>
+        </body>
+        <footer>
+            Footer
+        </footer>
+    </form>
+    <script src="assign2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</html>
