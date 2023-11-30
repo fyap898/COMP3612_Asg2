@@ -65,7 +65,6 @@ fetch(api)
 
    console.log(dataList);
 
-   loadMain();
 
 })
 .catch(error => {
@@ -1045,3 +1044,8 @@ function displayPlaylist()
    Some possibilities: if using Visual Code, use Live Server extension; if Brackets,
    use built-in Live Preview.
 */
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  loadMain();
+});
