@@ -8,6 +8,8 @@
 const api = 'https://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.php';
 
 
+document.addEventListener('DOMContentLoaded', function(){
+
 let genresList;
 
 fetch('genres.json')
@@ -75,6 +77,8 @@ fetch(api)
 })
 .catch(error => {
    console.error('dataList: Failed to fetch');
+});
+
 });
 
 //variables
