@@ -71,6 +71,8 @@ fetch(api)
    load_search_artist();
    load_search_genre();
 
+   loadMain();
+
 
 })
 .catch(error => {
@@ -1046,6 +1048,4 @@ function displayPlaylist()
 */
 
 
-window.addEventListener('DOMContentLoaded', function () {
-  loadMain();
-});
+
