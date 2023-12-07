@@ -64,9 +64,7 @@ fetch(api)
    dataList = JSON.parse(songData);
 
    console.log(dataList);
-   topGenre();
-   topArtist();
-   mostPopSong();
+   
 
    load_search_artist();
    load_search_genre();
@@ -754,6 +752,10 @@ function loadMain()
    const home = document.querySelector('#homelink');
    home.addEventListener('click', displayMain);
    popCredit();
+
+   topGenre();
+   topArtist();
+   mostPopSong();
 
    populateGenre();
    populateArtist();
