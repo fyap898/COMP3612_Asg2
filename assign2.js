@@ -64,6 +64,9 @@ fetch(api)
    dataList = JSON.parse(songData);
 
    console.log(dataList);
+   topGenre();
+   topArtist();
+   mostPopSong();
 
 
 })
