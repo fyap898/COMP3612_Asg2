@@ -68,6 +68,9 @@ fetch(api)
    topArtist();
    mostPopSong();
 
+   load_search_artist();
+   load_search_genre();
+
 
 })
 .catch(error => {
@@ -179,8 +182,6 @@ function clearPlaylist()
 function loadSearch()
 {
    init_radioBtn();
-   load_search_artist();
-   load_search_genre();
 
    displaySearch();
 }
@@ -751,10 +752,6 @@ function loadMain()
    const home = document.querySelector('#homelink');
    home.addEventListener('click', displayMain);
    popCredit();
-
-   topGenre();
-   topArtist();
-   mostPopSong();
 
    populateGenre();
    populateArtist();
