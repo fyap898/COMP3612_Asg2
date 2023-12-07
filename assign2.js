@@ -10,74 +10,74 @@ const api = 'https://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.
 
 document.addEventListener('DOMContentLoaded', function(){
 
-let genresList;
+   let genresList;
 
-fetch('genres.json')
-.then(response => {
-   if(!response.ok){
-      throw new Error('genreList: Failed to fetch data');
-   }
-   return response.json();
-})
-.then(data => {
-   const genreData = JSON.stringify(data);
-   genresList = JSON.parse(genreData);
+   fetch('genres.json')
+   .then(response => {
+      if(!response.ok){
+         throw new Error('genreList: Failed to fetch data');
+      }
+      return response.json();
+   })
+   .then(data => {
+      const genreData = JSON.stringify(data);
+      genresList = JSON.parse(genreData);
 
-   console.log(genresList);
-})
-.catch(error => {
-   console.error('genreList: Failed to fetch');
-});
-
-
-
-let artistsList;
-
-fetch('artists.json')
-.then(response => {
-   if(!response.ok){
-      throw new Error('artistsList: Failed to fetch data');
-   }
-   return response.json();
-})
-.then(data => {
-   const artistData = JSON.stringify(data);
-   artistsList = JSON.parse(artistData);
-
-   console.log(artistsList);
-})
-.catch(error => {
-   console.error('artistList: Failed to fetch');
-});
+      console.log(genresList);
+   })
+   .catch(error => {
+      console.error('genreList: Failed to fetch');
+   });
 
 
 
-let dataList;
+   let artistsList;
 
-fetch(api)
-.then(response => {
-   if(!response.ok){
-      throw new Error('dataList: Failed to fetch data');
-   }
-   return response.json();
-})
-.then(data => {
-   const songData = JSON.stringify(data);
-   dataList = JSON.parse(songData);
+   fetch('artists.json')
+   .then(response => {
+      if(!response.ok){
+         throw new Error('artistsList: Failed to fetch data');
+      }
+      return response.json();
+   })
+   .then(data => {
+      const artistData = JSON.stringify(data);
+      artistsList = JSON.parse(artistData);
 
-   console.log(dataList);
-   
-
-   load_search_artist();
-   load_search_genre();
-
-   loadMain();
+      console.log(artistsList);
+   })
+   .catch(error => {
+      console.error('artistList: Failed to fetch');
+   });
 
 
-})
-.catch(error => {
-   console.error('dataList: Failed to fetch');
-});
+
+   let dataList;
+
+   fetch(api)
+   .then(response => {
+      if(!response.ok){
+         throw new Error('dataList: Failed to fetch data');
+      }
+      return response.json();
+   })
+   .then(data => {
+      const songData = JSON.stringify(data);
+      dataList = JSON.parse(songData);
+
+      console.log(dataList);
+      
+
+      load_search_artist();
+      load_search_genre();
+
+      loadMain();
+
+
+   })
+   .catch(error => {
+      console.error('dataList: Failed to fetch');
+   });
 
 });
 
