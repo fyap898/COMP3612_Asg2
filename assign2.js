@@ -1046,6 +1046,6 @@ function displayPlaylist()
 */
 
 
-document.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('DOMContentLoaded', function () {
   loadMain();
 });
