@@ -10,7 +10,6 @@ const api = 'https://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.
 
 document.addEventListener('DOMContentLoaded', function(){
 
-   let genresList;
 
    fetch('genres.json')
    .then(response => {
@@ -31,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 
-   let artistsList;
 
    fetch('artists.json')
    .then(response => {
@@ -52,7 +50,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 
-   let dataList;
 
    fetch(api)
    .then(response => {
@@ -68,18 +65,22 @@ document.addEventListener('DOMContentLoaded', function(){
       console.log(dataList);
       
 
-      load_search_artist();
-      load_search_genre();
-
+      
+      displayMain();
       loadMain();
 
 
    })
-   .catch(error => {
-      console.error('dataList: Failed to fetch');
-   });
+   // .catch(error => {
+   //    console.error('dataList: Failed to fetch');
+   // });
 
 });
+
+
+let genresList;
+let artistsList;
+let dataList;
 
 //variables
 let topGenreList = [];
@@ -186,7 +187,8 @@ function clearPlaylist()
 function loadSearch()
 {
    init_radioBtn();
-
+   load_search_artist();
+   load_search_genre();
    displaySearch();
 }
 
@@ -757,10 +759,6 @@ function loadMain()
    home.addEventListener('click', displayMain);
    popCredit();
 
-   topGenre();
-   topArtist();
-   mostPopSong();
-
    populateGenre();
    populateArtist();
    populatePopSongs();
@@ -813,6 +811,7 @@ function loadArtistSearch(artist)
 */
 function populatePopSongs()
 {
+   mostPopSong();
    //Populating popular song list
    const pop_songs = document.querySelector('#pop_song');
    const songText = document.createElement('span');
@@ -861,6 +860,7 @@ function populatePopSongs()
 */
 function populateArtist()
 {
+   topArtist();
    //Populating artist list
    const artists = document.querySelector('#artist');
    const artistsText = document.createElement('span');
@@ -899,6 +899,7 @@ function populateArtist()
 */
 function populateGenre()
 {
+   topGenre();
    //Populating genre list
    const genres = document.querySelector('#genre');
    const genreText = document.createElement('span');
