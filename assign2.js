@@ -71,9 +71,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
    })
-   // .catch(error => {
-   //    console.error('dataList: Failed to fetch');
-   // });
+   .catch(error => {
+      console.error('dataList: Failed to fetch');
+   });
 
 });
 
